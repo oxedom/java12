@@ -15,18 +15,23 @@ public class Car {
     final int MAX_ID = 9999999;
     
 
-    // constructor
+    // Main Constructor 
     Car(int id, char type, String brand, boolean isManual ) {
         this._id = id;
         this._type = type;
-        this.set_brand(brand);
+        this._brand = brand;
         this._isManual = isManual;
      
     }
     
-    //Read about having two constructors with the same name, I think it's called overloading or something
-    //like that, maybe this method copies the car, check it out;
-    public Car(Car other) {}
+    //Copy Constructor for Car;
+    public Car(Car copyCar) {
+    	this._id = copyCar._id;
+    	this._type = copyCar._type;
+    	this._brand = copyCar._brand;
+    	this._isManual = copyCar._isManual;
+    	
+    }
     
     // methods
     //THINGS TO MAKE
@@ -41,17 +46,17 @@ public class Car {
     	
     //OVERRIDE EQUALS METHOD TO CHECK IF TWO CARS HAVE THE SAME PROPS;
     
-    void increaseSpeed() {
-        System.out.println("Cock");
+    void printBrand() {
+        System.out.println(_brand);
     }
 
-	public String get_brand() {
-		return _brand;
-	}
-
-	public void set_brand(String _brand) {
-		this._brand = _brand;
-	}
+//	public String get_brand() {
+//		return _brand;
+//	}
+//
+//	public void set_brand(String _brand) {
+//		this._brand = _brand;
+//	}
     
     // ...
 }

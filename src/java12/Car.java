@@ -168,6 +168,6 @@ public class Car {
     	}
     	
     	public boolean worse(Car otherCar) {
-    		return !better(otherCar);
+    		return otherCar.better(this);
     	}
 }

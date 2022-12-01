@@ -11,14 +11,26 @@ public class Car {
     //Sam notes; Make sure that a user can't enter a int under 0 or overthose max numbers;
     //type of car rank must be A B C D If the type isn't one of those set default to A
     //MAKE SURE THAT BRAND ISNT NULL WHEN OBJECT IS CREATED 
-    final String DEFAULT_TYPE = "A";
+    final char DEFAULT_TYPE = 'A';
     final int MAX_ID = 9999999;
+    final int MIN_ID = 00000001;
     
+    final char VALID_TYPE_1 = 'A';
+    final char VALID_TYPE_2= 'B';
+    final char VALID_TYPE_3= 'C';
+    final char VALID_TYPE_4= 'D';
 
     // Main Constructor 
     Car(int id, char type, String brand, boolean isManual ) {
-        this._id = id;
-        this._type = type;
+    	
+    	if(MIN_ID > id || id > MAX_ID) {
+    		this._id = MAX_ID;}
+		    else { this._id = id; }
+    	
+    	if(type != VALID_TYPE_1 || type != VALID_TYPE_2 || type != VALID_TYPE_3 || type != VALID_TYPE_4) {
+    		this._type = DEFAULT_TYPE;}
+    	    else { this._type = type; }
+
         this._brand = brand;
         this._isManual = isManual;
      

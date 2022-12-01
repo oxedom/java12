@@ -21,18 +21,49 @@ public class Car {
     final char VALID_TYPE_4= 'D';
 
     // Main Constructor 
-    Car(int id, char type, String brand, boolean isManual ) {
+    boolean validType(char typePara) {
+    	boolean result;
+      	if(typePara != VALID_TYPE_1 || typePara != VALID_TYPE_2 || typePara != VALID_TYPE_3 || typePara != VALID_TYPE_4) 
+      	{
+      		result = false;}
+    	 else { result = true; }
+    	return result;
+    }
+    
+    boolean validID(int idPara) 
+    {
+    	boolean result;
+    	if(MIN_ID > idPara || idPara > MAX_ID) {
+    		result = false;}
+		    else {result = true; }
     	
-    	if(MIN_ID > id || id > MAX_ID) {
-    		this._id = MAX_ID;}
-		    else { this._id = id; }
+    	return result;
+    }
+    
+    
+    Car(int idPara, char typePara, String brandPara, boolean isManualPara) {
     	
-    	if(type != VALID_TYPE_1 || type != VALID_TYPE_2 || type != VALID_TYPE_3 || type != VALID_TYPE_4) {
-    		this._type = DEFAULT_TYPE;}
-    	    else { this._type = type; }
+    	if(validType(typePara)) {
+    		_type = typePara;
+    	}
+    	else {
+    		_type = DEFAULT_TYPE;
+    	}
+    	
+    	if(validID(idPara)) {
+    		_id = idPara;
+    	}
+    	else { 
+    		_id = MAX_ID;
+    	}
 
-        this._brand = brand;
-        this._isManual = isManual;
+    	
+
+    	
+  
+
+        this._brand = brandPara;
+        this._isManual = isManualPara;
      
     }
     

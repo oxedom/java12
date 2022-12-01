@@ -15,7 +15,7 @@ public class Car {
     final int MAX_ID = 9999999;
     final int MIN_ID = 00000001;
     
-    final char VALID_TYPE_1 = 'A';
+    final char VALID_TYPE_1= 'A';
     final char VALID_TYPE_2= 'B';
     final char VALID_TYPE_3= 'C';
     final char VALID_TYPE_4= 'D';
@@ -23,10 +23,11 @@ public class Car {
     // Main Constructor 
     boolean validType(char typePara) {
     	boolean result;
-      	if(typePara != VALID_TYPE_1 || typePara != VALID_TYPE_2 || typePara != VALID_TYPE_3 || typePara != VALID_TYPE_4) 
+      	if(typePara == VALID_TYPE_1 || typePara == VALID_TYPE_2 ||  typePara == VALID_TYPE_3 ||  typePara == VALID_TYPE_4) 
       	{
-      		result = false;}
-    	 else { result = true; }
+      		result = true;}
+      	
+    	 else { result = false; }
     	return result;
     }
     
@@ -44,17 +45,17 @@ public class Car {
     Car(int idPara, char typePara, String brandPara, boolean isManualPara) {
     	
     	if(validType(typePara)) {
-    		_type = typePara;
+    		this._type = typePara;
     	}
     	else {
     		_type = DEFAULT_TYPE;
     	}
     	
     	if(validID(idPara)) {
-    		_id = idPara;
+    		this._id = idPara;
     	}
     	else { 
-    		_id = MAX_ID;
+    		this._id = MAX_ID;
     	}
 
     	
@@ -128,29 +129,19 @@ public class Car {
     	return result; 
     }
     
-    //THINGS TO MAKE
-    //getId, getType, getBrand, isManual
-    //MAKE SURE THEY ARE FOOL PROOF NO BUGS TO BYPASS THEM;
-    //Setters, setId setType setBrand setIsManual;
-//    public String toString()
-    //toString SHOULD RETURNA SOMETHING LIKE
-//    id:1234567 type:A brand:Mazda gear:manual
-//    id:8877665 type:D brand:Toyota gear:auto
-//    id:9999999 type:B brand:Renault gear:manual
-    	
-    //OVERRIDE EQUALS METHOD TO CHECK IF TWO CARS HAVE THE SAME PROPS;
-    
-    void printBrand() {
-        System.out.println(_brand);
-    }
 
-//	public String get_brand() {
-//		return _brand;
-//	}
-//
-//	public void set_brand(String _brand) {
-//		this._brand = _brand;
-//	}
+    	public boolean equals (Car otherCar) {
+    		boolean answer;
+    		if(otherCar._brand == _brand && otherCar._isManual == _isManual && otherCar._type == _type) 
+    		{
+    			answer = true;
+    		}
+    		else 
+    		{
+    			answer = false;
+    		}
+    		
+    		return answer;
     
-    // ...
+    	}
 }

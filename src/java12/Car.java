@@ -105,7 +105,7 @@ public class Car {
     	}
     }
     
-    void setBrrand(String brandPara ) {
+    void setBrand(String brandPara ) {
     	this._brand = brandPara;
     }
     

@@ -144,4 +144,30 @@ public class Car {
     		return answer;
     
     	}
+    	
+    	public boolean better(Car otherCar) {
+    		boolean answer = false;
+
+    		
+  
+//    		If the cars are the same type return TRUE
+    		if(otherCar._type == this._type) { answer = true;}
+    		
+    		if((otherCar._type == VALID_TYPE_2) && (this._type == VALID_TYPE_1) ) {answer = true;}
+    		if((otherCar._type == VALID_TYPE_3) && (this._type == VALID_TYPE_1) ) {answer = true;}		
+    		if((otherCar._type == VALID_TYPE_4) && (this._type == VALID_TYPE_1) ) {answer = true;}	
+    
+
+    		if((otherCar._type == VALID_TYPE_3) && (this._type == VALID_TYPE_2) ) {answer = true;}		
+    		if((otherCar._type == VALID_TYPE_4) && (this._type == VALID_TYPE_2) ) {answer = true;}
+    		
+	
+    		if((otherCar._type == VALID_TYPE_4) && (this._type == VALID_TYPE_3) ) {answer = true;}
+    				
+    		return answer;
+    	}
+    	
+    	public boolean worse(Car otherCar) {
+    		return !better(otherCar);
+    	}
 }

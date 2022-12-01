@@ -43,16 +43,18 @@ public class CarStudetsTester
         else 
             System.out.println("\tc3 isn't the same date as c4");
         
-//        System.out.println("\n4. Testing better method:");
-//        if(c2.better(c3))
-//            System.out.println("\tc2 is better than c3");        
-//        else 
-//            System.out.println("\tc2 isn't better than c3");     
-//        System.out.println("\n5. Testing worse method:");
-//        if(c2.worse(c3))
-//            System.out.println("\tc2 is worse than c3");        
-//        else 
-//            System.out.println("\tc2 isn't worse than c3");    
+        System.out.println("\n4. Testing better method:");
+        if(c2.better(c3))
+            System.out.println("\tc2 is better than c3");        
+        else 
+            System.out.println("\tc2 isn't better than c3");     
+        System.out.println("\n5. Testing worse method:");
+        
+        
+        if(c2.worse(c3))
+            System.out.println("\tc2 is worse than c3");        
+        else 
+            System.out.println("\tc2 isn't worse than c3");    
         
         System.out.println("\n********** Test Date - Finished **********\n");
 

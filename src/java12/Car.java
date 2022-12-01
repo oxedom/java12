@@ -76,7 +76,7 @@ public class Car {
     
     
     
-    int getID() {
+    int getId() {
     	return _id;
     }
     char getType() {
@@ -85,8 +85,29 @@ public class Car {
     String getBrand() {
     	return _brand;
     }
-    boolean getIsManual() {
+    boolean isManual() {
     	return _isManual; 
+    }
+    
+    void setId(int idPara) 
+    {
+    	if(validID(idPara)) {
+    		this._id = idPara;
+    	} 
+    }
+    
+    void setType(char typePara) {
+    	if(validType(typePara)) {
+    		this._type = typePara;
+    	}
+    }
+    
+    void setBrrand(String brandPara ) {
+    	this._brand = brandPara;
+    }
+    
+    void setIsManual(boolean manualPara) {
+    	this._isManual = manualPara;
     }
     
     

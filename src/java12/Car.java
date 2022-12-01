@@ -57,8 +57,10 @@ public class Car {
     		_id = MAX_ID;
     	}
 
- 
+    	
         this._brand = brandPara;
+        
+        
         this._isManual = isManualPara;
      
     }
@@ -110,6 +112,21 @@ public class Car {
     	this._isManual = manualPara;
     }
     
+    public String toString() {
+    	String result;
+    	String manualStatus;
+    	
+    	if(this._isManual) {
+    		manualStatus = "manual";
+    	}
+    	else {
+    		manualStatus = "auto";
+    	}
+    	
+    	result =  "id:"+this._id + " " + "type:"+this._type+ " " + "brand:" + this._brand+ " " + "gear:"+manualStatus;
+    	
+    	return result; 
+    }
     
     //THINGS TO MAKE
     //getId, getType, getBrand, isManual

@@ -57,11 +57,7 @@ public class Car {
     		_id = MAX_ID;
     	}
 
-    	
-
-    	
-  
-
+ 
         this._brand = brandPara;
         this._isManual = isManualPara;
      
@@ -77,6 +73,23 @@ public class Car {
     }
     
     // methods
+    
+    
+    
+    int getID() {
+    	return _id;
+    }
+    char getType() {
+    	return _type;
+    }
+    String getBrand() {
+    	return _brand;
+    }
+    boolean getIsManual() {
+    	return _isManual; 
+    }
+    
+    
     //THINGS TO MAKE
     //getId, getType, getBrand, isManual
     //MAKE SURE THEY ARE FOOL PROOF NO BUGS TO BYPASS THEM;

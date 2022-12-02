@@ -14,6 +14,11 @@ public class Date {
 	final int MIN_MONTH = 1;
 	final int MIN_YEAR = 1000;
 	
+	final int DEFAULT_DAY = 1;
+	final int DEFAULT_MONTH = 1;
+	final int DEFAULT_YEAR = 2000;
+
+	
 	boolean validDay(int dayPara) {
 		boolean answer;
 		answer = false;
@@ -44,10 +49,16 @@ public class Date {
 	boolean leapYear (int year) {
 		boolean answer;
 		answer = false;
+		//if the year is divided by 4
 		if((year%4) == 0 ) {
-			answer = true;
+			//if the year is century
+			if(year % 100 == 0) {
+				//If year divided by 400 then it is a leap year
+				if (year % 400 == 0) {
+					answer = true;
+				}
+			}
 		}
-		
 		return answer;
 	}
 
@@ -70,9 +81,51 @@ public class Date {
 	void setMonth (int monthToSet) {}
 	void setYear (int yearToSet) {}
 	
+	int geDay () { return _day;}
+	int getMonth() {return _month;}
+	int getYear( ) {return _year;}
+	
 	public boolean equals(Date otherDate) 
 	{
-		if((otherDate._day == this._day && otherDate._month === this._month && ))
+		boolean answer;
+		answer = false;
+		if((otherDate._day == this._day) && (otherDate._month == this._month) && (otherDate._year == this._year))  
+		{
+			answer = true;
+		}
+		return answer;
 	}
-
+	
+	public boolean before(Date otherDate) {
+		boolean answer;
+		answer = false;
+		
+		
+		return answer;
+	}
+	
+	
+	public boolean after(Date otherDate) {
+		return !otherDate.before(this);
+	}
+	
+	
+	public int difference (Date otherDate) {
+		return 99999;
+	}
+	
+	public String toString() {
+		return ""+this._day+"/"+this._month+"/"+this._year;
+	}
+	
+	public Date tomorrow() {
+		Date tomorrow = new Date(this._day, this._month, this._month);
+		;
+		tomorrow.setDay(this._day+1);
+		tomorrow.setMonth(this._month+1);
+		tomorrow.setYear(this._year+1);
+		
+		return tomorrow;
+		
+	}
 }

@@ -26,6 +26,8 @@ public class Date {
 		return answer;
 	}
 	
+
+	
 	boolean validMonth (int monthPara) {
 		boolean answer;
 		answer = false;
@@ -65,7 +67,40 @@ public class Date {
 	//CHECK IF LEGAL MAKE LEGAL FUNCTIONS;
 	//CHECK FOR YEARS WHERE 29TH OF FEB IS A THING
 	//SET DEFUALT OBJECT 
+
+	
 	public Date (int dayPara, int monthPara, int yearPara) {
+
+		
+		
+//		if(monthPara == 2 && dayPara > 29 )
+//		{
+//			//SET Default DATE BEACUSE IT'S AN ERROR 
+//		} 
+//		
+//		if(monthPara == 2 && dayPara == 29) {
+//		if(leapYear(yearPara)) {
+//			this._day = dayPara;
+//		}
+//		else {
+//			//SET TO DEFAULT DATE BECAUSE IT'S AN ERROR;
+//			
+//		}
+//		}
+		
+		if(validDay(dayPara)) 
+		{
+			this._day = dayPara;
+		}
+		if(validMonth(monthPara))
+		{
+			this._month = monthPara;
+		}
+		if(validYear(yearPara)) {
+			this._year = yearPara;
+		}
+		
+		
 		
 	}
 	
@@ -81,9 +116,9 @@ public class Date {
 	void setMonth (int monthToSet) {}
 	void setYear (int yearToSet) {}
 	
-	int geDay () { return _day;}
-	int getMonth() {return _month;}
-	int getYear( ) {return _year;}
+	int getDay() { return this._day;}
+	int getMonth() {return this._month;}
+	int getYear( ) {return this._year;}
 	
 	public boolean equals(Date otherDate) 
 	{

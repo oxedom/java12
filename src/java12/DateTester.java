@@ -1,5 +1,6 @@
+package java12;
 
-public class Main {
+public class DateTester {
 
     public static void main(String[] args) {
         showIntroduction();

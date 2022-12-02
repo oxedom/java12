@@ -24,7 +24,7 @@ public class Date {
 		boolean answer;
 		answer = false;
 		//Checks if day is in range of min and max
-		if((MIN_DAY <= dayPara) || (dayPara <= MAX_DAY) ) {
+		if((MIN_DAY <= dayPara) && (dayPara <= MAX_DAY) ) {
 			answer = true;
 		}
 		
@@ -35,7 +35,7 @@ public class Date {
 		boolean answer;
 		answer = false;
 		//Checks if month is in range of min and max
-		if((MIN_MONTH <= monthPara) || (monthPara <= MAX_MONTH) ) {
+		if((MIN_MONTH <= monthPara) && (monthPara <= MAX_MONTH) ) {
 			answer = true;
 		}
 		
@@ -46,7 +46,7 @@ public class Date {
 		boolean answer;
 		answer = false;
 		//Checks if year is in range of min and max
-		if((MIN_YEAR <= yearPara) || (yearPara <= MAX_YEAR) ) { 
+		if((MIN_YEAR <= yearPara) && (yearPara <= MAX_YEAR) ) { 
 			answer = true;
 		}
 
@@ -168,11 +168,11 @@ public class Date {
 		
 
 		boolean answer;
-		answer = false;
+		answer = true;
 		
-		if(otherDate._year < this._year) { answer = true;} 
-		if(otherDate._year == this._year && otherDate._year < this._month) { answer = true;}
-		if(otherDate._year == this._year && otherDate._year == this._month && otherDate._day < this._day) { answer = true;}
+		if(otherDate._year < this._year) { answer = false;} 
+		if(otherDate._year == this._year && otherDate._year < this._month) { answer = false;}
+		if(otherDate._year == this._year && otherDate._year == this._month && otherDate._day < this._day) { answer = false;}
 
 		return answer;
 	}
@@ -181,6 +181,17 @@ public class Date {
 	public boolean after(Date otherDate) {
 		return !before(otherDate);
 	}
+	
+	// computes the day number since the beginning of the Christian counting of years
+	 private int calculateDate ( int day, int month, int year)
+	{
+	 if (month < 3) {
+	 year--;
+	 month = month + 12;
+	 }
+	 return 365 * year + year/4 - year/100 + year/400 + ((month+1) * 306)/10 + (day - 62); }
+	 
+	
 	
 	
 	public int difference (Date otherDate) {
@@ -195,11 +206,18 @@ public class Date {
 	dif_year = this._year - otherDate._year;
 
 	if(dif_day <= 0) { 
-		dif_day = 0;
+		dif_day = 1;
 		dif_month--; }
-	if(dif_month <= 0) {dif_year--;};
+	
+	if(dif_month <= 0) {
+		dif_month = 1;
+		dif_year--;};
+	
 	
 
+//	answer = calculateDate(dif_day, dif_month, dif_year);
+
+	
 	answer = answer + (dif_month * 31) + (dif_year * 365) + dif_day ;
 
 	return answer;

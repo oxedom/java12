@@ -165,33 +165,95 @@ public class Date {
 	}
 	
 	public boolean before(Date otherDate) {
+		
+
 		boolean answer;
 		answer = false;
 		
-		
+		if(otherDate._year < this._year) { answer = true;} 
+		if(otherDate._year == this._year && otherDate._year < this._month) { answer = true;}
+		if(otherDate._year == this._year && otherDate._year == this._month && otherDate._day < this._day) { answer = true;}
+
 		return answer;
 	}
 	
 	
 	public boolean after(Date otherDate) {
-		return !otherDate.before(this);
+		return !before(otherDate);
 	}
 	
 	
 	public int difference (Date otherDate) {
-		return 99999;
+	int answer = 0;
+	int dif_day;
+	int dif_month;
+	int dif_year;
+	
+	dif_day = this._day - otherDate._day;
+
+	dif_month = this._month - otherDate._month;
+	dif_year = this._year - otherDate._year;
+
+	if(dif_day <= 0) { 
+		dif_day = 0;
+		dif_month--; }
+	if(dif_month <= 0) {dif_year--;};
+	
+
+	answer = answer + (dif_month * 31) + (dif_year * 365) + dif_day ;
+
+	return answer;
 	}
 	
 	public String toString() {
-		return ""+this._day+"/"+this._month+"/"+this._year;
+		
+		String displayDay = String.valueOf(this._day);
+		String displayMonth = String.valueOf(this._month);
+		//NEEDS 0 BEFORE
+		if(this._day < 10) { displayDay = "0"+this._day;}
+		if(this._month < 10) {displayMonth = "0"+this._month;}
+		
+	
+		return ""+displayDay+"/"+displayMonth+"/"+this._year;
 	}
 	
 	public Date tomorrow() {
 		Date tomorrow = new Date(this._day, this._month, this._month);
-		;
-		tomorrow.setDay(this._day+1);
-		tomorrow.setMonth(this._month+1);
-		tomorrow.setYear(this._year+1);
+		
+		int tommrowDay = this._day+1;
+		int tommrowMonth = this._month;
+		int tommrowYear = this._year;
+		
+		
+		
+		if(tommrowMonth == 2) {
+			 if(leapYear(tommrowYear) && tommrowDay == 29) {
+					
+				}
+			 else {tommrowDay = 1;
+			 tommrowMonth = 3;
+			 }
+		}
+		
+		
+		if(tommrowDay > 31 && tommrowMonth != 2) { 
+			tommrowDay = 1;
+			tommrowMonth++;
+		}
+		
+		
+		
+		if(tommrowMonth > 12) {
+		
+		tommrowMonth = 1;
+		tommrowYear++;
+		}
+		
+		
+		
+		tomorrow.setDay(tommrowDay);
+		tomorrow.setMonth(tommrowMonth);
+		tomorrow.setYear(tommrowYear);
 		
 		return tomorrow;
 		

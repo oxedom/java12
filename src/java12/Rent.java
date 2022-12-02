@@ -28,16 +28,36 @@ public class Rent {
 	
 	//need to sort out;
 	public Rent (Rent other) 
-
 	{
-
 		this._name = other._name;
 		this._car = other._car;
 		this._pickDate = other._pickDate;
 		this._returnDate = other._returnDate;
-		
 	}
 
+	void setName(String namePara) { this._name = namePara;}
+	void setCar(Car carPara) { this._car = carPara;}
+	
+	void setPick(Date datePara) {
+		if(datePara.before(_returnDate)) { 	this._pickDate = datePara;} 
+	
+	}
+	void setRent(Date datePara) {
+		if(datePara.after(datePara)) { this._returnDate = datePara;}
+	}
+	
+	String getName() {
+		return this._name;
+	}
+	Car getCar () {
+		return this._car;
+	}
+	Date getPick( ) {
+		return this._pickDate;
+	}
+	Date getRent( ) 
+	{ return this._returnDate;	
+}
 	
 	
 	

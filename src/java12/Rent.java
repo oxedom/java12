@@ -29,20 +29,20 @@ public class Rent {
 	//need to sort out;
 	public Rent (Rent other) 
 	{
-		this._name = other._name;
-		this._car = other._car;
-		this._pickDate = other._pickDate;
-		this._returnDate = other._returnDate;
+		this._name = other.getName();
+		this._car = other.getCar();
+		this._pickDate = other.getPickDate();
+		this._returnDate = other.getReturnDate();
 	}
 
 	void setName(String namePara) { this._name = namePara;}
 	void setCar(Car carPara) { this._car = carPara;}
 	
-	void setPick(Date datePara) {
+	void setPickDate(Date datePara) {
 		if(datePara.before(_returnDate)) { 	this._pickDate = datePara;} 
 	
 	}
-	void setRent(Date datePara) {
+	void setReturnDate(Date datePara) {
 		if(datePara.after(datePara)) { this._returnDate = datePara;}
 	}
 	
@@ -52,12 +52,28 @@ public class Rent {
 	Car getCar () {
 		return this._car;
 	}
-	Date getPick( ) {
+	Date getPickDate() {
 		return this._pickDate;
 	}
-	Date getRent( ) 
-	{ return this._returnDate;	
-}
+	Date getReturnDate() 
+	{ return this._returnDate;	}
+	
+	public boolean equals(Rent other) {
+		boolean answer = false;
+//		if(
+//		(other.getCar().equals(this._car) )
+//		&& (other.getName() == this._name) 
+//		&& (other.getPickDate().equals(this._pickDate) )
+//		&& (other.getReturnDate().equals(this._returnDate) )
+//		)
+		if(this._car.equals(other) && this._name == other.getName() && this._pickDate.equals(other.getPickDate()) && this._returnDate.equals(other.getReturnDate())) 
+		{
+			answer = true;
+		}
+		return answer;
+	}
+	
+	public int howManyDays() { return 1;}
 	
 	
 	

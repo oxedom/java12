@@ -1,5 +1,6 @@
+package java12;
 
-public class Main {
+public class RentTester {
 
     public static void main(String[] args) {
         showIntroduction();
@@ -139,96 +140,96 @@ public class Main {
         }
     }
 
-    private static void testGetPriceMethod() {
-        Date pickDate = new Date(1, 5, 2010);
-        Date returnDate = new Date(2, 9, 2011);
-        Car car = new Car(1212121, 'B', "Ford", true);
-        Rent rent = new Rent("Manny & Gloria", car, pickDate, returnDate);
-
-        logTest("Checking if getPrice returns the correct price");
-        if (rent.getPrice() == 66105) {
-            logSuccess();
-        }
-        else {
-            logError("Got " + rent.getPrice() + " Instead of " + 66105);
-        }
-
-        Date pickDate1 = new Date(29, 2, 2000);
-        Date returnDate1 = new Date(3, 3, 2000);
-        Car car1 = new Car(1000000, 'D', "Car", false);
-        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
-
-        logTest("Checking if getPrice returns the correct price");
-        if (rent1.getPrice() == 720) {
-            logSuccess();
-        }
-        else {
-            logError("Got " + rent1.getPrice() + " Instead of " + 720);
-        }
-
-        Date pickDate2 = new Date(19, 7, 5000);
-        Date returnDate2 = new Date(26, 7, 5000);
-        Car car2 = new Car(1119494, 'A', "Carly Bit Me", true);
-        Rent rent2 = new Rent("Charles", car2, pickDate2, returnDate2);
-        logTest("Checking if getPrice returns the correct price");
-        if (rent2.getPrice() == 630) {
-            logSuccess();
-        }
-        else {
-            logError("Got " + rent2.getPrice() + " Instead of 630");
-        }
-    }
-
-    private static void testUpgradeMethod() {
-        Car car = new Car(1111111, 'B', "Fazda", true);
-        Date pick = new Date(1, 4, 2000);
-        Date ret = new Date(1, 4, 3000);
-        Rent rent = new Rent("Gadi", car, pick, ret);
-
-        logTest("Checking if the car is actually replaced when the new car is better. Checking if the correct price is returned. Assuming equals method in Car works properly");
-        Car betterCar = new Car(1112223, 'D', "Israel Cars", false);
-        int price = rent.upgrade(betterCar);
-
-        if (rent.getCar().equals(betterCar) && price == 29584629) {
-            logSuccess();
-        }
-
-        logTest("Checking aliasing in upgrade method");
-        if (betterCar != rent.getCar()) {
-            logSuccess();
-        }
-        else {
-            logError("You probably have aliasing in your upgrade method");
-        }
-    }
-
-    private static void testOverlapMethod() {
-        Date pickDate1 = new Date(1, 5, 3000);
-        Date returnDate1 = new Date(2, 6, 3000);
-        Car car1 = new Car(1112223, 'A', "Ford", true);
-        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
-
-        Date pickDate2 = new Date(3, 4, 3000);
-        Date returnDate2 = new Date(1, 5, 3000);
-        Rent rent2 = new Rent("Israel", car1, pickDate2, returnDate2);
-
-        logTest("Checking overlap method and toString");
-        Rent rent3 = rent1.overlap(rent2);
-        if (rent3.toString().equals("Name:Israel From:03/04/3000 To:02/06/3000 Type:A Days:60 Price:5440")) {
-            logSuccess();
-        }
-        else {
-            logError("Didn't get the correct string. Got: " + rent3);
-        }
-    }
+//    private static void testGetPriceMethod() {
+//        Date pickDate = new Date(1, 5, 2010);
+//        Date returnDate = new Date(2, 9, 2011);
+//        Car car = new Car(1212121, 'B', "Ford", true);
+//        Rent rent = new Rent("Manny & Gloria", car, pickDate, returnDate);
+//
+//        logTest("Checking if getPrice returns the correct price");
+//        if (rent.getPrice() == 66105) {
+//            logSuccess();
+//        }
+//        else {
+//            logError("Got " + rent.getPrice() + " Instead of " + 66105);
+//        }
+//
+//        Date pickDate1 = new Date(29, 2, 2000);
+//        Date returnDate1 = new Date(3, 3, 2000);
+//        Car car1 = new Car(1000000, 'D', "Car", false);
+//        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
+//
+//        logTest("Checking if getPrice returns the correct price");
+//        if (rent1.getPrice() == 720) {
+//            logSuccess();
+//        }
+//        else {
+//            logError("Got " + rent1.getPrice() + " Instead of " + 720);
+//        }
+//
+//        Date pickDate2 = new Date(19, 7, 5000);
+//        Date returnDate2 = new Date(26, 7, 5000);
+//        Car car2 = new Car(1119494, 'A', "Carly Bit Me", true);
+//        Rent rent2 = new Rent("Charles", car2, pickDate2, returnDate2);
+//        logTest("Checking if getPrice returns the correct price");
+//        if (rent2.getPrice() == 630) {
+//            logSuccess();
+//        }
+//        else {
+//            logError("Got " + rent2.getPrice() + " Instead of 630");
+//        }
+//    }
+//
+//    private static void testUpgradeMethod() {
+//        Car car = new Car(1111111, 'B', "Fazda", true);
+//        Date pick = new Date(1, 4, 2000);
+//        Date ret = new Date(1, 4, 3000);
+//        Rent rent = new Rent("Gadi", car, pick, ret);
+//
+//        logTest("Checking if the car is actually replaced when the new car is better. Checking if the correct price is returned. Assuming equals method in Car works properly");
+//        Car betterCar = new Car(1112223, 'D', "Israel Cars", false);
+//        int price = rent.upgrade(betterCar);
+//
+//        if (rent.getCar().equals(betterCar) && price == 29584629) {
+//            logSuccess();
+//        }
+//
+//        logTest("Checking aliasing in upgrade method");
+//        if (betterCar != rent.getCar()) {
+//            logSuccess();
+//        }
+//        else {
+//            logError("You probably have aliasing in your upgrade method");
+//        }
+//    }
+//
+//    private static void testOverlapMethod() {
+//        Date pickDate1 = new Date(1, 5, 3000);
+//        Date returnDate1 = new Date(2, 6, 3000);
+//        Car car1 = new Car(1112223, 'A', "Ford", true);
+//        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
+//
+//        Date pickDate2 = new Date(3, 4, 3000);
+//        Date returnDate2 = new Date(1, 5, 3000);
+//        Rent rent2 = new Rent("Israel", car1, pickDate2, returnDate2);
+//
+//        logTest("Checking overlap method and toString");
+//        Rent rent3 = rent1.overlap(rent2);
+//        if (rent3.toString().equals("Name:Israel From:03/04/3000 To:02/06/3000 Type:A Days:60 Price:5440")) {
+//            logSuccess();
+//        }
+//        else {
+//            logError("Didn't get the correct string. Got: " + rent3);
+//        }
+//    }
 
     private static void test() {
         testMainConstructor();
         testCopyConstructor();
         testSetters();
         testHowManyDays();
-        testGetPriceMethod();
-        testUpgradeMethod();
-        testOverlapMethod();
+//        testGetPriceMethod();
+//        testUpgradeMethod();
+//        testOverlapMethod();
     }
 }

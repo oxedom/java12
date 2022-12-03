@@ -20,6 +20,9 @@ public class Date {
 	final int DEFAULT_YEAR = 2000;
 
 	
+
+	
+	
 	boolean validDay(int dayPara) {
 		boolean answer;
 		answer = false;
@@ -69,6 +72,15 @@ public class Date {
 		return answer;
 	}
 
+	boolean legalLongDay(int monthPara) {
+		
+		boolean answer = false;
+		if(monthPara == 1 || monthPara == 3 || monthPara == 5 || monthPara == 7 || monthPara == 8 || monthPara == 10 || monthPara == 12 )
+		{ answer = true;}
+		
+		
+		return answer;
+	}
 
 
 	public Date (int dayPara, int monthPara, int yearPara) {
@@ -82,6 +94,12 @@ public class Date {
 		{
 			setDefault = true;
 		} 
+		
+		if(dayPara == 31) {
+			if(!legalLongDay(monthPara)) {
+				setDefault = true;
+			}
+		}
 		
 //		if the day is the 29th of feb so check if it's a leapyear, and if it is then set the day to that day else set the date to false
 		if(monthPara == 2 && dayPara == 29) {
@@ -124,6 +142,13 @@ public class Date {
 	
 	void setDay (int dayToSet) {
 		
+		if(dayToSet == 31) { 
+			if(legalLongDay(this._month)) 
+			{
+				this._day = dayToSet;
+			} }
+		
+		
 		if(this._month == 2) {
 			if(validDay(dayToSet)) 
 			{
@@ -133,6 +158,8 @@ public class Date {
 		if(validDay(dayToSet)) {
 			this._day = dayToSet;
 		}
+		
+
 		
 
 	}

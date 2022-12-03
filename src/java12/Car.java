@@ -13,7 +13,7 @@ public class Car {
     //MAKE SURE THAT BRAND ISNT NULL WHEN OBJECT IS CREATED 
     final char DEFAULT_TYPE = 'A';
     final int MAX_ID = 9999999;
-    final int MIN_ID = 00000001;
+    final int MIN_ID = 10000000;
     
     final char VALID_TYPE_1= 'A';
     final char VALID_TYPE_2= 'B';

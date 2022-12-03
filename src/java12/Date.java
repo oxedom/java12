@@ -240,17 +240,17 @@ public class Date {
 	int dif_day;
 	int dif_month;
 	int dif_year;
-	
+	 
 	dif_day = this._day - otherDate._day;
 
 	dif_month = this._month - otherDate._month;
 	dif_year = this._year - otherDate._year;
 
-	if(dif_day <= 0) { 
+	if(dif_day < 0) { 
 		dif_day = 1;
 		dif_month--; }
 	
-	if(dif_month <= 0) {
+	if(dif_month < 0) {
 		dif_month = 1;
 		dif_year--;};
 	

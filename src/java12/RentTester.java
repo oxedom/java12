@@ -43,7 +43,7 @@ public class RentTester {
         Date pickDate = new Date(2, 2, 2000);
         Date returnDate = new Date(1, 2, 2000);
         Rent rent = new Rent("Yossi Gavni", car, pickDate, returnDate);
-
+ 
         logTest("Check if the main constructor notices the return date is before the pick date and sets the day after pick date as return date");
         if (rent.getReturnDate().getDay() == 3 && rent.getReturnDate().getMonth() == 2 && rent.getReturnDate().getYear() == 2000) {
             logSuccess();
@@ -75,7 +75,7 @@ public class RentTester {
         Date copiedReturnDate = copiedRent.getReturnDate();
         Car copiedCar = copiedRent.getCar();
 
-        if (copiedRent.getName().equals("Giora") &&
+        if (copiedRent.getName().equals("Giora") && 
             copiedPickDate.getDay() == 26 && copiedPickDate.getMonth() == 9 && copiedPickDate.getYear() == 1500 &&
             copiedReturnDate.getDay() == 5 && copiedReturnDate.getMonth() == 10 && copiedReturnDate.getYear() == 1501 &&
             copiedCar.getId() == 9878741 && copiedCar.getType() == 'C' && !copiedCar.isManual() && copiedCar.getBrand().equals("Honda")) {

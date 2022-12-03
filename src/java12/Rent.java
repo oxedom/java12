@@ -12,15 +12,28 @@ public class Rent {
 	final int PRICE_B = 150;
 	final int PRICE_C = 180;
 	final int PRICE_D = 240;
-	
+	 
 	public Rent (String name, Car car, Date pick, Date rent) 
 	{
 		this._name = name;
 		this._car = car;
 		//Checks that that the dates are at least 1 day difference
-		if(pick.equals(rent) || pick.difference(rent) < 0) { 
-			rent.tomorrow();
-			this._returnDate = rent;
+		if(pick.difference(rent) < 0) { 
+
+			System.out.println(rent.difference(pick));
+			this._pickDate = pick;
+			this._returnDate = rent;		
+		}
+		else {
+			this._pickDate = pick;
+			Date returnDateFixed = new Date(pick.getDay(), pick.getMonth(), pick.getYear());
+			this._returnDate = returnDateFixed;
+
+			System.out.println(rent.difference(pick));
+			
+			System.out.println(this._pickDate.toString() );
+			System.out.println(this._returnDate.toString() );
+
 		}
 	
 		
@@ -53,6 +66,7 @@ public class Rent {
 		return this._car;
 	}
 	Date getPickDate() {
+//		return new Date(1,1,2001);
 		return this._pickDate;
 	}
 	Date getReturnDate() 
@@ -60,12 +74,7 @@ public class Rent {
 	
 	public boolean equals(Rent other) {
 		boolean answer = false;
-//		if(
-//		(other.getCar().equals(this._car) )
-//		&& (other.getName() == this._name) 
-//		&& (other.getPickDate().equals(this._pickDate) )
-//		&& (other.getReturnDate().equals(this._returnDate) )
-//		)
+
 		if(this._car.equals(other) && this._name == other.getName() && this._pickDate.equals(other.getPickDate()) && this._returnDate.equals(other.getReturnDate())) 
 		{
 			answer = true;
@@ -73,8 +82,48 @@ public class Rent {
 		return answer;
 	}
 	
-	public int howManyDays() { return 1;}
+	public int howManyDays() {
+		int days = this._pickDate.difference(_returnDate);
+		return days;
 	
+	}
+	
+	public double getPrice() {
+		
+		double finalPrice;
+		int pricePerDay = 1;
+		int amountOfDays = this.howManyDays();
+		int amountOfWeeks = amountOfDays/7;
+		int amountOfFullPriceDays = amountOfDays%7;
+		
+		switch (this._car.getType()) 
+		{
+		case 'A':
+			pricePerDay = PRICE_A;
+			break;
+		case 'B':
+			pricePerDay = PRICE_B;
+			break;
+		case 'C':
+			pricePerDay = PRICE_C;
+			break;
+			
+		case 'D':
+			pricePerDay = PRICE_D;
+			break;
+		}
+		
+		if(amountOfWeeks >= 1) { 
+			finalPrice = (amountOfWeeks * 7 * pricePerDay) * 0.9;
+			finalPrice =+ (amountOfFullPriceDays * pricePerDay);
+		} else { 
+			finalPrice = amountOfDays * pricePerDay; 
+		}
+		
+		
+		return finalPrice;
+	}
+
 	
 	
 }

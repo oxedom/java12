@@ -179,6 +179,36 @@ public class DateTester {
             logDateValues(tomorrow);
         }
     }
+    
+    private static void testlegalLongDay( ) {
+    Date date = new Date(31,4, 2001);	
+    	
+    
+    logTest("Tests if tomorrow method returns 01/01/2000 when date = 31/04/2001");
+    if (date.getDay() == 1 && date.getMonth() == 1 && date.getYear() == 2000) {
+        logSuccess();
+    }
+    else {
+        logError("Didn't return the correct date. This is the date returned by tomorrow");
+        logDateValues(date);
+    }
+    }
+    
+    private static void testlegalLongDay2( ) {
+    Date date = new Date(30,6,2001);	
+    	
+    
+    logTest("Tests if tomorrow method returns 30/06/2001 when date = 30/06/2001");
+    if (date.getDay() == 30 && date.getMonth() == 6 && date.getYear() == 2001) {
+        logSuccess();
+    }
+    else {
+        logError("Didn't return the correct date. This is the date returned by tomorrow");
+        logDateValues(date);
+    }
+    }
+    
+        
     private static void test() {
         testMainConstructor();
         testCopyConstructor();
@@ -188,5 +218,7 @@ public class DateTester {
         testAfterMethod();
         testToStringMethod();
         testTomorrowMethod();
+        testlegalLongDay();
+        testlegalLongDay2();
     }
 }

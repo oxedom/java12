@@ -1,4 +1,11 @@
 package java12;
+/**
+ * Maman 12
+ * This class repersents a Date object
+ * @author Sam
+ * @version 2023a
+ */
+
 
 public class Date {
 	
@@ -239,17 +246,20 @@ public class Date {
 		  
 
 	
-
-	
-	
 	int soonerDate_amount = calculateDate(this._day, this._month, this._year);
 
-	
-	int laterDate_amount = calculateDate(laterDate.getDay(), laterDate.getMonth(), laterDate.getYear());
-//	System.out.println("Sooner" + soonerDate_amount);
-//	System.out.println("Later" + laterDate_amount);
 
-	return (soonerDate_amount - laterDate_amount );
+	int laterDate_amount = calculateDate(laterDate.getDay(), laterDate.getMonth(), laterDate.getYear());
+	
+
+
+	
+	int bigger = Math.max(soonerDate_amount, laterDate_amount);
+	int smaller = Math.min(soonerDate_amount, laterDate_amount);
+	int answer = bigger - smaller;
+	
+
+	return (bigger - smaller );
 
 	
 	}

@@ -1,5 +1,13 @@
 package java12;
 
+/**
+ * Maman 12
+ * This class repersents a Car object
+ * @author Sam
+ * @version 2023a
+ */
+
+
 public class Car {
 
     // fields

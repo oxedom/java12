@@ -1,4 +1,13 @@
 package java12;
+/**
+ * Maman 12
+ * This class repersents a RENT object
+ * @author Sam 
+ * @version 2023a
+ */
+
+
+
 
 public class Rent {
 	
@@ -21,7 +30,7 @@ public class Rent {
 		this._pickDate = pick;
 		this._returnDate = rent;
 		 
-		if(pick.difference(rent) < 0) { 
+		if(pick.difference(rent) > 0) { 
 
 			this._pickDate = pick;
 			this._returnDate = rent;		
@@ -86,22 +95,24 @@ public class Rent {
 		
 		
 		int days = this._pickDate.difference(this._returnDate);
-		
-	
+
 		return days;
 	
 	}
 	
 	public double getPrice() {
 		
-		int answer = 0;
+		double finalPrice = 0;
+
 		int pricePerDay = 0;
 		int amountOfDays = howManyDays();
-		
 		double amountOfWeeks = amountOfDays/7;
 		int amountOfFullPriceDays = amountOfDays%7;
 		
-		System.out.println(this._car.getType());
+		if(amountOfWeeks < 0) { 
+			amountOfWeeks = 0;
+		}
+		
 		switch (this._car.getType()) 
 		{
 		case 'A':
@@ -118,15 +129,25 @@ public class Rent {
 			pricePerDay = PRICE_D;
 			break;
 		}
-		
-		if(amountOfWeeks < 1) 
-		{
-			answer = pricePerDay * amountOfDays;
+	
+
+		if(amountOfWeeks >= 1) { 
+			double discount = pricePerDay * 0.9;
+			finalPrice =  amountOfWeeks * 7 * discount;
+			finalPrice = finalPrice + (amountOfFullPriceDays * pricePerDay);
 		}
+		else { 
+			finalPrice = (pricePerDay * amountOfDays);
+		}
+
 		
 		
 		
-		return answer;
+		
+		
+		
+		
+		return finalPrice;
 	}
 
 	

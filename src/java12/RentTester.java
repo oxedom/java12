@@ -157,6 +157,7 @@ public class RentTester {
             logError("Got " + rent.getPrice() + " Instead of " + 66105);
         }
 
+
         Date pickDate1 = new Date(29, 2, 2000);
         Date returnDate1 = new Date(3, 3, 2000);
         Car car1 = new Car(1000000, 'D', "Car", false);

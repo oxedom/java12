@@ -96,7 +96,7 @@ public class DateTester {
         date.setYear(10001);
         if (date.getYear() == 2001) {
             logSuccess();
-        }
+        } 
         else {
             logError("The method changed the date even though it was not expected to do so");
             logDateValues(date);
@@ -208,6 +208,54 @@ public class DateTester {
     }
     }
     
+    private static void testDiff() {
+        Date date1 = new Date(10,5,2001);	
+        Date date2 = new Date(10,5,2002);	
+        
+        
+        logTest("Tests if tomorrow method returns 30/06/2001 when date = 30/06/2001");
+        if (date2.difference(date1) == 365) {
+            logSuccess();
+        }
+        else {
+            logError("Didn't return the correct date. This is the date returned by tomorrow");
+            System.out.println(date2.difference(date1));
+//            logDateValues(date2);
+        }
+        } 
+    
+    private static void testDiff2() {
+        Date date1 = new Date(10,5,2001);	
+        Date date2 = new Date(30,5,2002);	
+        
+        
+        logTest("Tests if tomorrow method returns 10,5,2001when date = 30,5,2002");
+        if (date2.difference(date1) == 385) {
+            logSuccess();
+        }
+        else {
+            logError("Didn't return the correct date. This is the date returned by tomorrow");
+            System.out.println(date2.difference(date1));
+//            logDateValues(date2);
+        }
+        }
+    
+    private static void testDiff3() {
+        Date date1 = new Date(29,2,2001);	
+        Date date2 = new Date(3,3,2001);	
+        
+        
+        logTest("Tests if tomorrow method returns 29,2,2001 when date = 3,3,2001");
+        if (date2.difference(date1) == 5) {
+            logSuccess();
+        }
+        else {
+            logError("Didn't return the correct date. This is the date returned by tomorrow");
+            System.out.println(date2.difference(date1));
+//            logDateValues(date2);
+        }
+        }
+    
         
     private static void test() {
         testMainConstructor();
@@ -220,5 +268,8 @@ public class DateTester {
         testTomorrowMethod();
         testlegalLongDay();
         testlegalLongDay2();
+        testDiff();
+        testDiff2();
+        testDiff3();
     }
 }

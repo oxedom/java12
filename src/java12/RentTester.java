@@ -125,61 +125,65 @@ public class RentTester {
         }
     }
 
-    private static void testHowManyDays() {
-        Car car = new Car(1114442, 'D', "Maly", true);
-        Date pick = new Date(1, 5, 2000);
-        Date ret = new Date(5, 6, 2001);
-        Rent rent = new Rent("Naomi", car, pick, ret);
+    private static void testDiff() {
+    	   Car car = new Car(1114442, 'D', "Maly", true);
+           Date pick = new Date(1, 5, 2000);
+           Date ret = new Date(5, 6, 2001);
+           Rent rent = new Rent("Naomi", car, pick, ret);
+           
+           logTest("Checking the howManyDays method. It should return 400");
+           if (ret.difference(pick) == 400) {
+               logSuccess();
+           }
+           else {
+               logError("Didn't get the correct amount of days between pick and return. Got: " + rent.howManyDays());
+           }
+           
+    }
+    
+    
 
-        logTest("Checking the howManyDays method. It should return 400");
-        if (rent.howManyDays() == 400) {
+    private static void testGetPriceMethod() {
+        Date pickDate = new Date(1, 5, 2010);
+        Date returnDate = new Date(2, 9, 2011);
+        Car car = new Car(1212121, 'B', "Ford", true);
+        Rent rent = new Rent("Manny & Gloria", car, pickDate, returnDate);
+
+        logTest("Checking if getPrice returns the correct price");
+        if (rent.getPrice() == 66105) {
             logSuccess();
         }
         else {
-            logError("Didn't get the correct amount of days between pick and return. Got: " + rent.howManyDays());
+            logError("Got " + rent.getPrice() + " Instead of " + 66105);
+        }
+
+        Date pickDate1 = new Date(29, 2, 2000);
+        Date returnDate1 = new Date(3, 3, 2000);
+        Car car1 = new Car(1000000, 'D', "Car", false);
+        
+        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
+        
+        logTest("Checking if getPrice returns the correct price");
+        if (rent1.getPrice() == 720) {
+            logSuccess();
+        }
+        else {
+            logError("Got " + rent1.getPrice() + " Instead of " + 720);
+        }
+
+        Date pickDate2 = new Date(19, 7, 5000);
+        Date returnDate2 = new Date(26, 7, 5000);
+        Car car2 = new Car(1119494, 'A', "Carly Bit Me", true);
+        Rent rent2 = new Rent("Charles", car2, pickDate2, returnDate2);
+        logTest("Checking if getPrice returns the correct price");
+        if (rent2.getPrice() == 630) {
+            logSuccess();
+        }
+        else {
+            logError("Got " + rent2.getPrice() + " Instead of 630");
         }
     }
 
-//    private static void testGetPriceMethod() {
-//        Date pickDate = new Date(1, 5, 2010);
-//        Date returnDate = new Date(2, 9, 2011);
-//        Car car = new Car(1212121, 'B', "Ford", true);
-//        Rent rent = new Rent("Manny & Gloria", car, pickDate, returnDate);
-//
-//        logTest("Checking if getPrice returns the correct price");
-//        if (rent.getPrice() == 66105) {
-//            logSuccess();
-//        }
-//        else {
-//            logError("Got " + rent.getPrice() + " Instead of " + 66105);
-//        }
-//
-//        Date pickDate1 = new Date(29, 2, 2000);
-//        Date returnDate1 = new Date(3, 3, 2000);
-//        Car car1 = new Car(1000000, 'D', "Car", false);
-//        Rent rent1 = new Rent("Israel", car1, pickDate1, returnDate1);
-//
-//        logTest("Checking if getPrice returns the correct price");
-//        if (rent1.getPrice() == 720) {
-//            logSuccess();
-//        }
-//        else {
-//            logError("Got " + rent1.getPrice() + " Instead of " + 720);
-//        }
-//
-//        Date pickDate2 = new Date(19, 7, 5000);
-//        Date returnDate2 = new Date(26, 7, 5000);
-//        Car car2 = new Car(1119494, 'A', "Carly Bit Me", true);
-//        Rent rent2 = new Rent("Charles", car2, pickDate2, returnDate2);
-//        logTest("Checking if getPrice returns the correct price");
-//        if (rent2.getPrice() == 630) {
-//            logSuccess();
-//        }
-//        else {
-//            logError("Got " + rent2.getPrice() + " Instead of 630");
-//        }
-//    }
-//
 //    private static void testUpgradeMethod() {
 //        Car car = new Car(1111111, 'B', "Fazda", true);
 //        Date pick = new Date(1, 4, 2000);
@@ -227,8 +231,8 @@ public class RentTester {
         testMainConstructor();
         testCopyConstructor();
         testSetters();
-        testHowManyDays();
-//        testGetPriceMethod();
+        testDiff();
+        testGetPriceMethod();
 //        testUpgradeMethod();
 //        testOverlapMethod();
     }

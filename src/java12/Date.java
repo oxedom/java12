@@ -224,7 +224,7 @@ public class Date {
 	}
 	
 	// computes the day number since the beginning of the Christian counting of years
-	 private int calculateDate ( int day, int month, int year)
+	 public int calculateDate ( int day, int month, int year)
 	{
 	 if (month < 3) {
 	 year--;
@@ -235,33 +235,23 @@ public class Date {
 	
 	
 	
-	public int difference (Date otherDate) {
-	int answer = 0;
-	int dif_day;
-	int dif_month;
-	int dif_year;
-	 
-	dif_day = this._day - otherDate._day;
-
-	dif_month = this._month - otherDate._month;
-	dif_year = this._year - otherDate._year;
-
-	if(dif_day < 0) { 
-		dif_day = 1;
-		dif_month--; }
-	
-	if(dif_month < 0) {
-		dif_month = 1;
-		dif_year--;};
-	
-	
-
-//	answer = calculateDate(dif_day, dif_month, dif_year);
+	public int difference (Date laterDate) {
+		  
 
 	
-	answer = answer + (dif_month * 31) + (dif_year * 365) + dif_day ;
 
-	return answer;
+	
+	
+	int soonerDate_amount = calculateDate(this._day, this._month, this._year);
+
+	
+	int laterDate_amount = calculateDate(laterDate.getDay(), laterDate.getMonth(), laterDate.getYear());
+//	System.out.println("Sooner" + soonerDate_amount);
+//	System.out.println("Later" + laterDate_amount);
+
+	return (soonerDate_amount - laterDate_amount );
+
+	
 	}
 	
 	public String toString() {
@@ -285,8 +275,8 @@ public class Date {
 		
 		
 		
-		if(tommrowMonth == 2) {
-			 if(leapYear(tommrowYear) && tommrowDay == 29) {
+		if(tommrowMonth == 2 && tommrowDay == 29) {
+			 if(leapYear(tommrowYear)) {
 					
 				}
 			 else {tommrowDay = 1;

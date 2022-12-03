@@ -18,21 +18,21 @@ public class Rent {
 		this._name = name;
 		this._car = car;
 		//Checks that that the dates are at least 1 day difference
+		this._pickDate = pick;
+		this._returnDate = rent;
+		 
 		if(pick.difference(rent) < 0) { 
 
-			System.out.println(rent.difference(pick));
 			this._pickDate = pick;
 			this._returnDate = rent;		
 		}
 		else {
 			this._pickDate = pick;
 			Date returnDateFixed = new Date(pick.getDay(), pick.getMonth(), pick.getYear());
+			returnDateFixed = returnDateFixed.tomorrow();
 			this._returnDate = returnDateFixed;
 
-			System.out.println(rent.difference(pick));
-			
-			System.out.println(this._pickDate.toString() );
-			System.out.println(this._returnDate.toString() );
+
 
 		}
 	
@@ -42,10 +42,10 @@ public class Rent {
 	//need to sort out;
 	public Rent (Rent other) 
 	{
-		this._name = other.getName();
-		this._car = other.getCar();
-		this._pickDate = other.getPickDate();
-		this._returnDate = other.getReturnDate();
+		this._name = other._name;
+		this._car = other._car;
+		this._pickDate = other._pickDate;
+		this._returnDate = other._returnDate;
 	}
 
 	void setName(String namePara) { this._name = namePara;}
@@ -83,19 +83,25 @@ public class Rent {
 	}
 	
 	public int howManyDays() {
-		int days = this._pickDate.difference(_returnDate);
+		
+		
+		int days = this._pickDate.difference(this._returnDate);
+		
+	
 		return days;
 	
 	}
 	
 	public double getPrice() {
 		
-		double finalPrice;
-		int pricePerDay = 1;
-		int amountOfDays = this.howManyDays();
-		int amountOfWeeks = amountOfDays/7;
+		int answer = 0;
+		int pricePerDay = 0;
+		int amountOfDays = howManyDays();
+		
+		double amountOfWeeks = amountOfDays/7;
 		int amountOfFullPriceDays = amountOfDays%7;
 		
+		System.out.println(this._car.getType());
 		switch (this._car.getType()) 
 		{
 		case 'A':
@@ -113,15 +119,14 @@ public class Rent {
 			break;
 		}
 		
-		if(amountOfWeeks >= 1) { 
-			finalPrice = (amountOfWeeks * 7 * pricePerDay) * 0.9;
-			finalPrice =+ (amountOfFullPriceDays * pricePerDay);
-		} else { 
-			finalPrice = amountOfDays * pricePerDay; 
+		if(amountOfWeeks < 1) 
+		{
+			answer = pricePerDay * amountOfDays;
 		}
 		
 		
-		return finalPrice;
+		
+		return answer;
 	}
 
 	

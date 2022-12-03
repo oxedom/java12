@@ -142,14 +142,47 @@ public class Rent {
 
 		
 		
-		
-		
-		
-		
-		
 		return finalPrice;
 	}
 
 	
+	public int upgrade (Car newCar) {
+		int price_diff = 0;
+		if(newCar.better(this._car)) 
+		{
+			char typeOfOld =  this._car.getType();
+			char typeOfNew = newCar.getType();
+			int priceOfOld = 0;
+			int priceOfNew = 0;
+			
+			if(typeOfOld == 'A' ) {priceOfOld = PRICE_A; }
+			if(typeOfOld == 'B' ) {priceOfOld = PRICE_B;}
+			if(typeOfOld == 'D' ) {priceOfOld = PRICE_C;}
+			if(typeOfOld == 'C' ) {priceOfOld = PRICE_D;}
+			
+			if(typeOfNew == 'A' ) {priceOfNew = PRICE_A; }
+			if(typeOfNew == 'B' ) {priceOfNew = PRICE_B;}
+			if(typeOfNew == 'D' ) {priceOfNew = PRICE_C;}
+			if(typeOfNew == 'C' ) {priceOfNew = PRICE_D;}
+			
+			price_diff = typeOfNew - priceOfOld;
+			this._car = newCar;
+		}
+		
+		return price_diff;
+	}
 	
+	
+	public String toString() {
+
+		return "Name:"+this._name+ " From:"+this._pickDate.toString()+" To:"+this._returnDate.toString()+" Type:"+this._car.getType()+" Days:"+howManyDays()+" Price:"+getPrice();
+	} 
+//	public Rent overlap (Rent other) {
+//		
+//		if(other._name == this._name || this._car.equals(other.getCar())) {
+//			
+//		}
+//		
+//		
+//	}
 }

@@ -185,29 +185,39 @@ public class RentTester {
         }
     }
 
-//    private static void testUpgradeMethod() {
-//        Car car = new Car(1111111, 'B', "Fazda", true);
-//        Date pick = new Date(1, 4, 2000);
-//        Date ret = new Date(1, 4, 3000);
-//        Rent rent = new Rent("Gadi", car, pick, ret);
-//
-//        logTest("Checking if the car is actually replaced when the new car is better. Checking if the correct price is returned. Assuming equals method in Car works properly");
-//        Car betterCar = new Car(1112223, 'D', "Israel Cars", false);
-//        int price = rent.upgrade(betterCar);
-//
-//        if (rent.getCar().equals(betterCar) && price == 29584629) {
-//            logSuccess();
-//        }
-//
-//        logTest("Checking aliasing in upgrade method");
-//        if (betterCar != rent.getCar()) {
-//            logSuccess();
-//        }
-//        else {
-//            logError("You probably have aliasing in your upgrade method");
-//        }
-//    }
-//
+    private static void testUpgradeMethod() {
+        Car car = new Car(1111111, 'B', "Fazda", true);
+        Date pick = new Date(1, 4, 2000);
+        Date ret = new Date(1, 4, 3000);
+        Rent rent = new Rent("Gadi", car, pick, ret);
+
+        logTest("Checking if the car is actually replaced when the new car is better. Checking if the correct price is returned. Assuming equals method in Car works properly");
+        Car betterCar = new Car(1112223, 'D', "Israel Cars", false);
+        int price = rent.upgrade(betterCar);
+
+        if (rent.getCar().equals(betterCar) && price == 29584629) {
+            logSuccess();
+        }
+
+        logTest("Checking aliasing in upgrade method");
+        if (betterCar != rent.getCar()) {
+            logSuccess();
+        }
+        else {
+            logError("You probably have aliasing in your upgrade method");
+        }
+    }
+    
+    private static void testToString() {
+        Car car = new Car(1111111, 'A', "Fazda", true);
+        Date pick = new Date(1, 4, 2000);
+        Date ret = new Date(5, 4, 2001);
+        Rent rent = new Rent("Gadi", car, pick, ret);
+        System.out.println(   rent.toString());
+        System.out.println(   rent.toString());
+     
+    }
+//  )
 //    private static void testOverlapMethod() {
 //        Date pickDate1 = new Date(1, 5, 3000);
 //        Date returnDate1 = new Date(2, 6, 3000);
@@ -234,7 +244,8 @@ public class RentTester {
         testSetters();
         testDiff();
         testGetPriceMethod();
-//        testUpgradeMethod();
+        testUpgradeMethod();
+        testToString();
 //        testOverlapMethod();
     }
 }

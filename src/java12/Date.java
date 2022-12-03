@@ -165,8 +165,22 @@ public class Date {
 	}
 	
 	void setMonth (int monthToSet) {
+
+		
 		if(validMonth(monthToSet)){
-			this._month = monthToSet;
+			
+			if(this._day == 31) { 
+				if(legalLongDay(monthToSet)) {
+					this._month = monthToSet;
+				}
+			}
+			else {  
+				
+				this._month = monthToSet;
+			}
+			
+			
+			
 		}
 		
 	}

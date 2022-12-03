@@ -40,20 +40,20 @@ public class RentStudentTester
         else 
             System.out.println("\tr3 isn't the same Rent as r4");
 
-//        System.out.println("\n4. Testing howMantDays method:");
-//        System.out.println("\tr2: "+r2.howManyDays()+" days."); 
-//        System.out.println("\tr3: "+r3.howManyDays()+" days.");      
-//        System.out.println("\n5. Testing getPrice method:");
-//        System.out.println("\tprice of r2: "+r2.getPrice()); 
-//        System.out.println("\tprice of r3: "+r3.getPrice()); 
-//        System.out.println("\n6. Testing upgrade method:");
-//
-//        System.out.println("\tupgrade r2 to car type 'D' returns: "+r2.upgrade(new Car(1234567, 'D', "Volvo", false)));
-//        System.out.println("\n7. Testing overlap method:");
-//        Rent r5 = new Rent("Bob", new Car (1234567, 'A', "Opel", false), new Date(1,2,2020), new Date(5,2,2020)); 
-//        Rent r6 = new Rent("Bob", new Car (1234567, 'A', "Opel", false), new Date(4,2,2020), new Date(8,2,2020));  
-//        System.out.println("\tr5:"+r5);
-//        System.out.println("\tr6:"+r6);
+        System.out.println("\n4. Testing howMantDays method:");
+        System.out.println("\tr2: "+r2.howManyDays()+" days."); 
+        System.out.println("\tr3: "+r3.howManyDays()+" days.");      
+        System.out.println("\n5. Testing getPrice method:");
+        System.out.println("\tprice of r2: "+r2.getPrice()); 
+        System.out.println("\tprice of r3: "+r3.getPrice()); 
+        System.out.println("\n6. Testing upgrade method:");
+
+        System.out.println("\tupgrade r2 to car type 'D' returns: "+r2.upgrade(new Car(1234567, 'D', "Volvo", false)));
+        System.out.println("\n7. Testing overlap method:");
+        Rent r5 = new Rent("Bob", new Car (1234567, 'A', "Opel", false), new Date(1,2,2020), new Date(5,2,2020)); 
+        Rent r6 = new Rent("Bob", new Car (1234567, 'A', "Opel", false), new Date(4,2,2020), new Date(8,2,2020));  
+        System.out.println("\tr5:"+r5);
+        System.out.println("\tr6:"+r6);
 //        System.out.println("\toverlap of r5 and r6 is: "+r5.overlap(r6));
 //
 //        System.out.println("\n********** Test Rent - Finished **********\n");

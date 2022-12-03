@@ -7,8 +7,6 @@ package java12;
  */
 
 
-
-
 public class Rent {
 	
 	private String _name; 
@@ -16,12 +14,21 @@ public class Rent {
 	private Date _pickDate;
 	private Date _returnDate;
 	
-	//price per day per model car
+	//price per day per model car finals
 	final int PRICE_A = 100;
 	final int PRICE_B = 150;
 	final int PRICE_C = 180;
 	final int PRICE_D = 240;
 	 
+	//constructer
+	 
+	/**
+	 * Constructor main
+	 * @param name
+	 * @param car
+	 * @param pick
+	 * @param rent
+	 */
 	public Rent (String name, Car car, Date pick, Date rent) 
 	{
 		this._name = name;
@@ -48,7 +55,12 @@ public class Rent {
 		
 	}
 	
-	//need to sort out;
+	//copy constructer;
+	
+	/**
+	 * Copy Constructer
+	 * @param other
+	 */
 	public Rent (Rent other) 
 	{
 		this._name = other._name;
@@ -57,6 +69,11 @@ public class Rent {
 		this._returnDate = other._returnDate;
 	}
 
+	//Setters
+	/**
+	 * Setters
+	 * @param namePara
+	 */
 	void setName(String namePara) { this._name = namePara;}
 	void setCar(Car carPara) { this._car = carPara;}
 	
@@ -68,6 +85,11 @@ public class Rent {
 		if(datePara.after(datePara)) { this._returnDate = datePara;}
 	}
 	
+	//Getters
+	/**
+	 * Getters
+	 * @return
+	 */
 	String getName() {
 		return this._name;
 	}
@@ -81,16 +103,29 @@ public class Rent {
 	Date getReturnDate() 
 	{ return this._returnDate;	}
 	
+	//Checks if rent is equal
+	
+	
+	
+	/**
+	 * @param other
+	 * Checks if the Rent is Equal by comparing all props
+	 * @return
+	 */
 	public boolean equals(Rent other) {
 		boolean answer = false;
 
-		if(this._car.equals(other) && this._name == other.getName() && this._pickDate.equals(other.getPickDate()) && this._returnDate.equals(other.getReturnDate())) 
+		if(this._car.equals(other.getCar()) && this._name == other.getName() && this._pickDate.equals(other.getPickDate()) && this._returnDate.equals(other.getReturnDate())) 
 		{
 			answer = true;
 		}
 		return answer;
 	}
-	
+	//How many days using difference method on date;
+	/**
+	 * Returns a int of how many days beween 2 dates
+	 * @return
+	 */
 	public int howManyDays() {
 		
 		
@@ -98,8 +133,14 @@ public class Rent {
 
 		return days;
 	
-	}
+	} 
 	
+	//Gets price of renting a car
+	
+	/**
+	 * returns price of renting a car acording to days and type of car
+	 * @return
+	 */
 	public double getPrice() {
 		
 		double finalPrice = 0;
@@ -146,6 +187,15 @@ public class Rent {
 	}
 
 	
+	//Upgrades car
+	
+	
+	/**
+	 * Upgrade car type
+	 * @param newCar
+	 * 
+	 * @return
+	 */
 	public int upgrade (Car newCar) {
 		int price_diff = 0;
 		if(newCar.better(this._car)) 
@@ -172,17 +222,24 @@ public class Rent {
 		return price_diff;
 	}
 	
-	
+	//TO string
+	/* Over rides to string and prints out a string of rent
+	 @Overrides
+	 */
 	public String toString() {
 
 		return "Name:"+this._name+ " From:"+this._pickDate.toString()+" To:"+this._returnDate.toString()+" Type:"+this._car.getType()+" Days:"+howManyDays()+" Price:"+getPrice();
 	} 
-//	public Rent overlap (Rent other) {
-//		
-//		if(other._name == this._name || this._car.equals(other.getCar())) {
-//			
-//		}
-//		
-//		
-//	}
+	/**
+	 * Failed to implement overlap method
+	 * @param Rent other
+	 * 
+	 * @return
+	 */
+	public Rent overlap (Rent other) {
+		
+		return other;
+		
+		
+	}
 }

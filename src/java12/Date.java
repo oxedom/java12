@@ -7,7 +7,8 @@ package java12;
  */
 
 
-public class Date {
+
+public class Date { 
 	
 	private int _day;
 	private int _month;
@@ -28,7 +29,10 @@ public class Date {
 
 	
 
-	
+	/**
+	 * Valid helper methods
+	 *
+	 */
 	
 	boolean validDay(int dayPara) {
 		boolean answer;
@@ -63,6 +67,11 @@ public class Date {
 		return answer;
 	}
 	
+	/**
+	 * Leap year method checks if leap year or not 
+	 * @param year
+	 *
+	 */
 	boolean leapYear (int year) {
 		boolean answer;
 		answer = false;
@@ -74,11 +83,30 @@ public class Date {
 				if (year % 400 == 0) {
 					answer = true;
 				}
+				else 
+				{
+					answer = false;
+				}
 			}
+			else { 
+				answer = true;
+				}
 		}
+	
 		return answer;
 	}
+	
 
+    
+	
+
+	//Checks if day is 31 days if it is legal by it's month
+	
+	/**
+	 * //Checks if day is 31 days if it is legal by it's month
+	 * @param monthPara
+	 *
+	 */
 	boolean legalLongDay(int monthPara) {
 		
 		boolean answer = false;
@@ -89,7 +117,14 @@ public class Date {
 		return answer;
 	}
 
-
+	
+	//COnstructer
+	
+	/**Constructer main
+	 * @param dayPara
+	 * @param monthPara
+	 * @param yearPara
+	 */
 	public Date (int dayPara, int monthPara, int yearPara) {
 
 		//Set default boolean parameter, if in anytime in this function it becomes true it will
@@ -101,7 +136,7 @@ public class Date {
 		{
 			setDefault = true;
 		} 
-		
+		//If day is 31 days checks if legal by month
 		if(dayPara == 31) {
 			if(!legalLongDay(monthPara)) {
 				setDefault = true;
@@ -110,11 +145,11 @@ public class Date {
 		
 //		if the day is the 29th of feb so check if it's a leapyear, and if it is then set the day to that day else set the date to false
 		if(monthPara == 2 && dayPara == 29) {
-			
+		//leapyear checker
 		if(leapYear(yearPara)) {this._day = dayPara; } else {	setDefault = true;}
 		}
 		
-		//Checks if valid
+		//Checks if valid by using helper functions
 		if(validDay(dayPara)) {
 			this._day = dayPara;
 		}
@@ -138,7 +173,12 @@ public class Date {
 		}
 		
 	}
+	//Copy construcer
 	
+	/**
+	 * Copy constructer
+	 * @param other
+	 */
 	public Date (Date other) 
 	{
 		this._day = other._day;
@@ -147,6 +187,8 @@ public class Date {
 		
 	}
 	
+	
+	//setters
 	void setDay (int dayToSet) {
 		
 		if(dayToSet == 31) { 
@@ -197,9 +239,12 @@ public class Date {
 		}
 	}
 	
+	//Getters
 	int getDay() { return this._day;}
 	int getMonth() {return this._month;}
 	int getYear( ) {return this._year;}
+	
+	//Equal function that compares days;
 	
 	public boolean equals(Date otherDate) 
 	{
@@ -212,6 +257,13 @@ public class Date {
 		return answer;
 	}
 	
+	//Before that checks if date is before or not
+	
+	/**
+	 * Retruns if a date is before another date
+	 * @param otherDate
+	 * @return
+	 */
 	public boolean before(Date otherDate) {
 		
 
@@ -225,12 +277,20 @@ public class Date {
 		return answer;
 	}
 	
+	//Before boolean reveresed with !
 	
+	/**
+	 * @param otherDate
+	 * returns true or false if date is after a certain date
+	 * @return
+	 */
 	public boolean after(Date otherDate) {
 		return !before(otherDate);
 	}
 	
 	// computes the day number since the beginning of the Christian counting of years
+	
+	
 	 public int calculateDate ( int day, int month, int year)
 	{
 	 if (month < 3) {
@@ -241,7 +301,13 @@ public class Date {
 	 
 	
 	
-	
+	//How many days betwen days
+	 
+	/**
+	 * @param laterDate
+	 * Difference between dates
+	 * @return
+	 */
 	public int difference (Date laterDate) {
 		  
 
@@ -264,6 +330,12 @@ public class Date {
 	
 	}
 	
+	//Overloading to string method
+	
+	/**
+	 * Override to string method to print out string
+	 *
+	 */
 	public String toString() {
 		
 		String displayDay = String.valueOf(this._day);
@@ -276,6 +348,12 @@ public class Date {
 		return ""+displayDay+"/"+displayMonth+"/"+this._year;
 	}
 	
+	//Sets day to next day.
+	
+	/**
+	 * Sets day forward by one
+	 * @return
+	 */
 	public Date tomorrow() {
 		Date tomorrow = new Date(this._day, this._month, this._month);
 		

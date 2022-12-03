@@ -8,6 +8,11 @@ package java12;
  */
 
 
+
+/**
+ * @author sam
+ *
+ */
 public class Car {
 
     // fields
@@ -16,9 +21,7 @@ public class Car {
     private String _brand;
     private boolean _isManual;
 
-    //Sam notes; Make sure that a user can't enter a int under 0 or overthose max numbers;
-    //type of car rank must be A B C D If the type isn't one of those set default to A
-    //MAKE SURE THAT BRAND ISNT NULL WHEN OBJECT IS CREATED 
+    //Finals;
     final char DEFAULT_TYPE = 'A';
     final int MAX_ID = 9999999;
     final int MIN_ID = 10000000;
@@ -27,8 +30,14 @@ public class Car {
     final char VALID_TYPE_2= 'B';
     final char VALID_TYPE_3= 'C';
     final char VALID_TYPE_4= 'D';
-
-    // Main Constructor 
+ 
+    //check valid type
+    
+    /**
+     * @param typePara
+     * CHecks if valid
+     * @return
+     */
     boolean validType(char typePara) {
     	boolean result;
       	if(typePara == VALID_TYPE_1 || typePara == VALID_TYPE_2 ||  typePara == VALID_TYPE_3 ||  typePara == VALID_TYPE_4) 
@@ -39,6 +48,11 @@ public class Car {
     	return result;
     }
     
+    /**
+     * @param typePara
+     * CHecks if valid
+     * @return
+     */
     boolean validID(int idPara) 
     {
     	boolean result;
@@ -49,7 +63,15 @@ public class Car {
     	return result;
     }
     
+    //Car Constructor;
     
+    /**
+     * Main Constructor 
+     * @param idPara
+     * @param typePara
+     * @param brandPara
+     * @param isManualPara
+     */
     Car(int idPara, char typePara, String brandPara, boolean isManualPara) {
     	
     	if(validType(typePara)) {
@@ -86,7 +108,11 @@ public class Car {
     // methods
     
     
-    
+    //Getters
+    /**
+     * Getters
+     * @return
+     */
     int getId() {
     	return _id;
     }
@@ -100,6 +126,12 @@ public class Car {
     	return _isManual; 
     }
     
+    //SETTERS
+    
+    /**
+     * Setters
+     * @param idPara
+     */
     void setId(int idPara) 
     {
     	if(validID(idPara)) {
@@ -121,6 +153,12 @@ public class Car {
     	this._isManual = manualPara;
     }
     
+    //Print to string
+    
+    /**
+     *@Overrides toString methods
+     *return a string object of the car
+     */
     public String toString() {
     	String result;
     	String manualStatus;
@@ -137,7 +175,12 @@ public class Car {
     	return result; 
     }
     
-
+    
+    //Checks if two cars are the same or not;
+    /**
+     *equals checks if two cars are the same
+     *Returns true or false
+     */
     	public boolean equals (Car otherCar) {
     		boolean answer;
     		if(otherCar._brand == _brand && otherCar._isManual == _isManual && otherCar._type == _type) 
@@ -153,6 +196,12 @@ public class Car {
     
     	}
     	
+    	//Check if a car is better
+    	/** 
+    	 * Returns if a car type is better
+    	 * @param otherCar
+    	 * @return
+    	 */
     	public boolean better(Car otherCar) {
     		boolean answer = false;
 
@@ -174,7 +223,13 @@ public class Car {
     				
     		return answer;
     	}
+    	//Check if car is worse by ! the better method 
     	
+    	/**
+    	 * @param otherCar
+    	 * returns true or false if car is worse or not
+    	 * @return
+    	 */
     	public boolean worse(Car otherCar) {
     		return !better(otherCar);
     	}
